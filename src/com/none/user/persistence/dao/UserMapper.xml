@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.none.user.persistence.dao.UserDao">
+
+    <resultMap id="userMap" type="com.none.user.persistence.entity.User">
+                <id column="id" property="id"/>
+                <result column="name" property="name"/>
+                <result column="age" property="age"/>
+                <result column="updated" property="updated"/>
+                <result column="created" property="created"/>
+                <result column="deleted" property="deleted"/>
+    </resultMap>
+
+    <sql id="fields">
+            id ,
+            name ,
+            age ,
+            updated ,
+            created ,
+            deleted 
+    </sql>
+
+    <select id="findUserById" parameterType="java.lang.Long" resultMap="userMap">
+        select
+        <include refid="fields"/>
+        from t_user
+        where id = #{id}
+    </select>
+
+</mapper>
