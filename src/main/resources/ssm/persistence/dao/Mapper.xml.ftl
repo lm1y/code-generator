@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="${targetPackage}.persistence.dao.UserDao">
+<mapper namespace="${targetPackage}.persistence.dao.${domain}Dao">
 
     <resultMap id="${domainVariable}Map" type="${targetPackage}.persistence.entity.${domain}">
         <#list columns as column>
@@ -18,7 +18,7 @@
         </#list>
     </sql>
 
-    <select id="findUserById" parameterType="java.lang.Long" resultMap="${domainVariable}Map">
+    <select id="find${domain}ById" parameterType="java.lang.Long" resultMap="${domainVariable}Map">
         select
         <include refid="fields"/>
         from ${table.name}
